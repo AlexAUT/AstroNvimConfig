@@ -17,7 +17,19 @@ return {
         require("mini.bracketed").quickfix('forward')
       end,
       desc = 'Next quickfix'
-    }
+    },
+    ["<leader>Ot"] = {
+      function()
+        require("overseer").toggle()
+      end,
+      desc = 'Toggle overseer task pane'
+    },
+    ["<leader>Or"] = {
+      function()
+        require("overseer").run_template({})
+      end,
+      desc = 'Run overseer task'
+    },
   },
   i = {
     -- second key is the lefthand side of the map
