@@ -27,6 +27,7 @@ return {
         },
       }
     })
+    require('dap.ext.vscode').load_launchjs()
     end
   }
 }

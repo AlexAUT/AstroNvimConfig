@@ -56,7 +56,7 @@ return {
 
   -- Configure require("lazy").setup() options
   lazy = {
-    defaults = { lazy = true },
+    defaults = { lazy = false },
     performance = {
       rtp = {
         -- customize default disabled vim plugins
@@ -81,5 +81,32 @@ return {
     --     ["~/%.config/foo/.*"] = "fooscript",
     --   },
     -- }
+    -- local dap = require('dap')
+
+    -- local widgets = require 'dap.ui.widgets'
+    -- nnoremap('<leader>do', function() widgets.centered_float(widgets.scopes) end)
+    -- nnoremap('<leader>dI', widgets.hover)
+    --
+    -- vim.fn.sign_define('DapBreakpoint', { text = '●', texthl = 'WarningMsg', linehl = '', numhl = '' })
+    -- vim.fn.sign_define('DapBreakpointCondition', { text = '◆', texthl = 'WarningMsg', linehl = '', numhl = '' })
+    -- vim.fn.sign_define('DapLogPoint', { text = '◆', texthl = 'SpellRare', linehl = '', numhl = '' })
+    -- vim.fn.sign_define('DapBreakpointRejected', { text = '●', texthl = 'LineNr', linehl = '', numhl = '' })
+    local dap = require("dap")
+    dap.adapters.lldb = {
+      type = 'executable',
+      command = '/usr/bin/lldb-vscode', -- adjust as needed
+      name = "lldb"
+    }
+    dap.adapters.cpp = {
+      type = 'executable',
+      command = '/usr/bin/lldb-vscode', -- adjust as needed
+      name = "lldb"
+    }
+    dap.adapters.cppdbg = {
+      id = 'cppdbg',
+      type = 'executable',
+      command = '/home/alex/Documents/git/vscode-cpptools/extension/debugAdapters/bin/OpenDebugAD7',
+    }
+
   end,
 }

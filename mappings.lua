@@ -30,6 +30,33 @@ return {
       end,
       desc = 'Run overseer task'
     },
+    ["<leader>dd"] = {
+      require("dap").down,
+      desc = 'Go one frame down'
+    },
+    ["<leader>du"] = {
+      require("dap").up,
+      desc = 'Go one frame up'
+    },
+    ["<leader>dt"] = {
+      require('dapui').toggle,
+      desc = "Toggle DAP UI"
+    },
+    ["<leader>di"] = {
+      require('dapui').eval,
+      desc = "Eval cursor location"
+    },
+    ["<leader>dI"] = {
+      require('dap.ui.widgets').hover,
+      desc = "Widgets hover"
+    },
+    ["<leader>dO"] = {
+      function()
+        require('dap.ui.widgets').centered_float(require('dap.ui.widgets').scopes)
+      end,
+      desc = "Widgets hover"
+    },
+    ["<A-o>"] = ":ClangdSwitchSourceHeader<CR>",
   },
   i = {
     -- second key is the lefthand side of the map
