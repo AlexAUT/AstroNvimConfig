@@ -15,4 +15,8 @@ return {
       --lvim.builtin.treesitter.matchup.enable = true
     end,
   },
+  {
+    "nvim-telescope/telescope-dap.nvim",
+    setup = function() require("telescope").load_extension "dap" end,
+  },
 }

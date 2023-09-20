@@ -51,6 +51,18 @@ return {
       desc = "Widgets hover",
     },
     ["<A-o>"] = ":ClangdSwitchSourceHeader<CR>",
+    ["<leader>fv"] = {
+      "<CMD>Telescope dap variables<CR>",
+      desc = "Find DAP variables",
+    },
+    ["<leader>fB"] = {
+      "<CMD>Telescope dap list_breakpoints<CR>",
+      desc = "Find DAP breakpoints",
+    },
+    ["<leader>fs"] = {
+      "<CMD>Telescope dap frames<CR>",
+      desc = "Find DAP frames (stacks)",
+    },
   },
   i = {
     -- second key is the lefthand side of the map
