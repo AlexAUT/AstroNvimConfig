@@ -91,22 +91,34 @@ return {
     -- vim.fn.sign_define('DapBreakpointCondition', { text = '◆', texthl = 'WarningMsg', linehl = '', numhl = '' })
     -- vim.fn.sign_define('DapLogPoint', { text = '◆', texthl = 'SpellRare', linehl = '', numhl = '' })
     -- vim.fn.sign_define('DapBreakpointRejected', { text = '●', texthl = 'LineNr', linehl = '', numhl = '' })
-    local dap = require("dap")
-    dap.adapters.lldb = {
-      type = 'executable',
-      command = '/usr/bin/lldb-vscode', -- adjust as needed
-      name = "lldb"
-    }
+    local dap = require "dap"
+    -- dap.adapters.lldb = {
+    --   type = "executable",
+    --   command = "/usr/bin/lldb-vscode", -- adjust as needed
+    --   name = "lldb",
+    -- }
+
+    local mason_registry = require "mason-registry"
+    local codelldb = mason_registry.get_package "codelldb" -- note that this will error if you provide a non-existent package name
+
     dap.adapters.cpp = {
-      type = 'executable',
-      command = '/usr/bin/lldb-vscode', -- adjust as needed
-      name = "lldb"
-    }
-    dap.adapters.cppdbg = {
-      id = 'cppdbg',
-      type = 'executable',
-      command = '/home/alex/Documents/git/vscode-cpptools/extension/debugAdapters/bin/OpenDebugAD7',
+      type = "server",
+      port = "${port}",
+      executable = {
+        -- CHANGE THIS to your path!
+        command = codelldb:get_install_path() .. "/codelldb", -- adjust as needed
+        args = { "--port", "${port}" },
+
+        -- On windows you may have to uncomment this:
+        -- detached = false,
+      },
     }
 
+    -- External Terminal
+    -- dap.defaults.fallback.force_external_terminal = true
+    dap.defaults.fallback.external_terminal = {
+      command = vim.trim(vim.fn.system { "/usr/bin/which", "gnome-terminal" }),
+      args = { "--title=NVIM-DAP-OUTPUT", "--" },
+    }
   end,
 }
