@@ -63,6 +63,9 @@ return {
       "<CMD>Telescope dap frames<CR>",
       desc = "Find DAP frames (stacks)",
     },
+    ["<leader>dl"] = {
+      function() require("dap").run_last() end,
+    },
   },
   i = {
     -- second key is the lefthand side of the map
