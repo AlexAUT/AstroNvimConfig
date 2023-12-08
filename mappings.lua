@@ -65,7 +65,12 @@ return {
     },
     ["<leader>dl"] = {
       function() require("dap").run_last() end,
+      desc = "Run last DAP configuration"
     },
+    ["<F5>"] = {
+      "<CMD>CMakeDebug<CR>",
+      desc = "CMake Debug",
+    }
   },
   i = {
     -- second key is the lefthand side of the map

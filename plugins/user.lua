@@ -19,4 +19,9 @@ return {
     "nvim-telescope/telescope-dap.nvim",
     setup = function() require("telescope").load_extension "dap" end,
   },
+
+  {
+    "theHamsta/nvim-dap-virtual-text",
+    opts = {}
+  }
 }

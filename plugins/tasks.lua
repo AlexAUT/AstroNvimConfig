@@ -30,20 +30,20 @@ return {
       require("dap.ext.vscode").load_launchjs()
     end,
   },
-  -- {
-  --   "Civitasv/cmake-tools.nvim",
-  --   config = function()
-  --     require("cmake-tools").setup {
-  --       cmake_dap_configuration = { -- debug settings for cmake
-  --         name = "cpp",
-  --         type = "codelldb",
-  --         request = "launch",
-  --         stopOnEntry = false,
-  --         runInTerminal = true,
-  --         console = "integratedTerminal",
-  --       },
-  --       cmake_executor = { name = "overseer", opts = {} },
-  --     }
-  --   end,
-  -- },
+  {
+    "Civitasv/cmake-tools.nvim",
+    config = function()
+      require("cmake-tools").setup {
+        cmake_dap_configuration = { -- debug settings for cmake
+          name = "cpp",
+          type = "codelldb",
+          request = "launch",
+          stopOnEntry = false,
+          runInTerminal = true,
+          -- console = "integratedTerminal",
+        },
+        cmake_executor = { name = "overseer", opts = {} },
+      }
+    end,
+  },
 }
